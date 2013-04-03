@@ -1,3 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password, :type
+  self.inheritance_column = "inheritance"
+  attr_accessible :email, :password, :type, :password_confirm
+  attr_accessor :password_confirm
 end

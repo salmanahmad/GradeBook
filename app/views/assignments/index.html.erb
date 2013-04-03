@@ -1,6 +1,14 @@
-<h1>Listing assignments</h1>
 
-<table>
+<h3>
+  <div class="pull-right">
+    <p>
+      <%= link_to 'New Assignment', new_assignment_path, {:class => "btn"} %>
+    </p>
+  </div>
+  Assignments
+</h3>
+
+<table class="table">
   <tr>
     <th>Name</th>
     <th>Instructions</th>
@@ -22,4 +30,4 @@
 
 <br />
 
-<%= link_to 'New Assignment', new_assignment_path %>
+

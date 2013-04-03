@@ -12,10 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :body %><br />
-    <%= f.text_field :body %>
+    <%= f.label :assignment %>
+    <%= f.select :assignment_id, @assignments %>
+  </div>
+
+  <div class="field">
+    <%= f.label :body %>
+    <%= f.text_area :body, rows: 5, cols:100, style: "width:500px"  %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => "btn" %>
   </div>
 <% end %>

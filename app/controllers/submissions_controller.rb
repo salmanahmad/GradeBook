@@ -25,7 +25,13 @@ class SubmissionsController < ApplicationController
   # GET /submissions/new.json
   def new
     @submission = Submission.new
-
+    assignments = Assignment.all
+    
+    @assignments = []
+    for a in assignments do
+      @assignments << [a.name, a.id]
+    end
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @submission }
@@ -35,13 +41,18 @@ class SubmissionsController < ApplicationController
   # GET /submissions/1/edit
   def edit
     @submission = Submission.find(params[:id])
+    assignments = Assignment.all
+    
+    @assignments = []
+    for a in assignments do
+      @assignments << [a.name, a.id]
+    end
   end
 
   # POST /submissions
   # POST /submissions.json
   def create
     @submission = Submission.new(params[:submission])
-
     respond_to do |format|
       if @submission.save
         format.html { redirect_to @submission, notice: 'Submission was successfully created.' }

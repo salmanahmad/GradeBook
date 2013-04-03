@@ -1,15 +1,14 @@
 GradeBook::Application.routes.draw do
-  resources :submissions
-
-
   resources :users
-
-
   resources :assignments
-
-
-  get "welcome/index"
+  resources :submissions
+  
+  resource :session, controller: "session"
+  
   root to: "welcome#index"
+  get "/signin" => "session#new"
+  get "/signout" => "session#destroy"
+
   
 
   # The priority is based upon order of creation:

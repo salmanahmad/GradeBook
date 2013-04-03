@@ -1,14 +1,17 @@
+
+require 'digest/sha1'
+
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
-  def index
-    @users = User.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @users }
-    end
-  end
+  #def index
+  #  @users = User.all
+  #
+  #  respond_to do |format|
+  #    format.html # index.html.erb
+  #    format.json { render json: @users }
+  #  end
+  #end
 
   # GET /users/1
   # GET /users/1.json
@@ -41,9 +44,14 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
-
+    
     respond_to do |format|
+      @user.password = Digest::SHA1.hexdigest @user.password
       if @user.save
+        session["user"] = {
+          name: @user.email,
+          type: @user.type
+        }
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
