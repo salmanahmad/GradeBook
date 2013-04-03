@@ -5,10 +5,42 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  
+  
+  <link href='http://fonts.googleapis.com/css?family=Courgette' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Cantora+One' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Carrois+Gothic' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Raleway+Dots' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Racing+Sans+One' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
-<%= yield %>
+<div id="page">
+  <div id="header">
+    <h1>GradeBook</h1>
+  </div>
+  <div id="navigation">
+    <ul class="right">
+      <li><a href="/">Sign In</a></li>
+    </ul>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li>Assignments</li>
+      <li>Submissions</li>
+    </ul>
+
+  </div>
+  <div id="content">
+  <%= yield %>  
+  </div>
+  <div id="footer">
+    
+  </div>
+</div>
+
+
+
+
 
 </body>
 </html>
