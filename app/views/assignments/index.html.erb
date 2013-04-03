@@ -1,10 +1,12 @@
 
 <h3>
+  <% if current_teacher %>
   <div class="pull-right">
     <p>
       <%= link_to 'New Assignment', new_assignment_path, {:class => "btn"} %>
     </p>
   </div>
+  <% end %>
   Assignments
 </h3>
 
@@ -13,8 +15,10 @@
     <th>Name</th>
     <th>Instructions</th>
     <th></th>
+    <% if current_teacher %>
     <th></th>
     <th></th>
+    <% end %>
   </tr>
 
 <% @assignments.each do |assignment| %>
@@ -22,8 +26,10 @@
     <td><%= assignment.name %></td>
     <td><%= assignment.instructions %></td>
     <td><%= link_to 'Show', assignment %></td>
+    <% if current_teacher %>
     <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
     <td><%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>

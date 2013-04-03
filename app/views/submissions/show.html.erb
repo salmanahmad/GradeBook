@@ -1,15 +1,22 @@
 <h3>
+  <% if current_userid == @submission.user_id %>
   <div class="pull-right">
     <p>
       <%= link_to 'Edit', edit_submission_path(@submission), {:class => "btn"} %>
     </p>
   </div>
+  <% end %>
   Submission Detail
 </h3>
 
 <p>
   <b>Assignment:</b>
   <%= @submission.assignment.name %>
+</p>
+
+<p>
+  <b>Student:</b>
+  <%= @submission.user.email rescue "nil" %>
 </p>
 
 <p>

@@ -49,6 +49,7 @@ class UsersController < ApplicationController
       @user.password = Digest::SHA1.hexdigest @user.password
       if @user.save
         session["user"] = {
+          id: @user.id,
           name: @user.email,
           type: @user.type
         }

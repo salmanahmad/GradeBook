@@ -1,10 +1,12 @@
 
 <h3>
+  <% if current_teacher %>
   <div class="pull-right">
     <p>
       <%= link_to 'Edit', edit_assignment_path(@assignment), {:class => "btn"} %>
     </p>
   </div>
+  <% end %>
   Assignment: <%= @assignment.name %>
 </h3>
 
@@ -21,7 +23,19 @@
 
 <% if current_teacher then %>
   <h3>Submissions</h3>
-  
+  <table class="table">
+    <tr>
+      <th>Student</th>
+      <th>Submission</th>
+      <th></th>
+    <% for submission in @assignment.submissions do %>
+      <tr>
+        <td><%= submission.user.email rescue "nil" %></td>
+        <td><%= submission.body %></td>
+        <td><%= link_to "View", submission %></td>
+      </tr>
+    <% end %>
+  </table>
 <% end %>
 
 

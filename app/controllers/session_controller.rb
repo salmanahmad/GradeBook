@@ -9,6 +9,7 @@ class SessionController < ApplicationController
     password = Digest::SHA1.hexdigest params["password"]
     if @user && @user.password == password then
       session["user"] = {
+        id: @user.id,
         name: @user.email,
         type: @user.type
       }

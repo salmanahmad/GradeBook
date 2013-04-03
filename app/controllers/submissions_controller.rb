@@ -1,8 +1,9 @@
 class SubmissionsController < ApplicationController
+  
   # GET /submissions
   # GET /submissions.json
   def index
-    @submissions = Submission.all
+    @submissions = Submission.where(user_id: current_userid).all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -53,6 +54,7 @@ class SubmissionsController < ApplicationController
   # POST /submissions.json
   def create
     @submission = Submission.new(params[:submission])
+    @submission.user_id = current_userid
     respond_to do |format|
       if @submission.save
         format.html { redirect_to @submission, notice: 'Submission was successfully created.' }
